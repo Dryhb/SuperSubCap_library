@@ -18,7 +18,7 @@ setup(
   author_email='dryhb.pseudotooshort@gmail.com',
   license='MIT', 
   classifiers=classifiers,
-  keywords='latin and greek subscripts and superscripts', 
+  keywords='latin greek subscripts superscripts caps letters', 
   packages=find_packages(),
   install_requires=[''] 
 )
