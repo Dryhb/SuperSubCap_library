@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import setup,find_packages
  
 classifiers = [
   'Development Status :: 5 - Production/Stable',
@@ -10,7 +10,7 @@ classifiers = [
 
 setup(
   name='SuperSubCap',
-  version='0.0.4',
+  version='0.0.5',
   description='Superscripts and subscripts for latin and greek letters, numbers and operands',
   long_description=open('README.txt').read() + '\n\n' + open('CHANGELOG.txt').read(),
   url='https://github.com/Dryhb/SuperSubCap_library',  

@@ -24,8 +24,9 @@ alls = ["%s"%(__name__),
         "subscripts_to_superscripts",
         "superscripts_to_subscripts",
         "small_to_caps",
-        "caps_to_small"]
-# 14 elements
+        "caps_to_small",
+        "maping"]
+# 15 elements
 
 # Really detailled informations
 def info(*targets:str):
@@ -53,9 +54,10 @@ def info(*targets:str):
                     "alls":"""Help on alls in module %s:
 
     alls: alls[0:3] --> lib info object
-    alls: alls[4:%s] --> dict name
+    alls: alls[4:14] --> dict name
     lib info object discribing the contents of this library
-    dict name in this file discribing a translation between letter types"""%(len(alls),__name__),
+    dict name in this file discribing a translation between letter types
+    alls: alls[14:%s] --> helpful functions"""%(__name__,len(alls)),
                     
                     # help_letters
                     "help_letters":"""Help on help_letters in module %s:
@@ -179,7 +181,15 @@ def info(*targets:str):
         - Superscripts greek
         - Subscripts greek
     Not all caps have smalls equivalent, best if given.
-    Feedback to the dev is welcomed"""%(__name__)
+    Feedback to the dev is welcomed"""%(__name__),
+
+
+        # Functions
+            # maping
+            "maping":"""Help on maping in module %s:
+    maping: str,format,default_fill --> transformed str in given format
+    if the caracter is not available in end format, replace with default_fill
+    checks if disabled increase perf but doesn't perform checks on inputs ==> less stable"""%(__name__)
                 }
     if targets == tuple():
         print(help_letters["%s"%(__name__)])
@@ -415,4 +425,40 @@ caps_to_small = {# Latin
                  "Ω":"ω","ᵪ":"ᵪ","Ψ":"ψ","𝓏":"ζ"
                  }
 
+#TODO softer checks for starting and ending formats
+def maping(arg:str,transformation:str="superscripts",default_fill:str=" ",/,checks:bool=True):
+    """maping Transforms a string to desired format
+
+    Args:
+        arg (str): String you want to convert
+        transformation (str, optional): end format (in alls[4:14]). Defaults to "superscripts".
+        default_fill (str, optional): caracter if no caracter is found. Defaults to " ".
+        checks (bool, optional): if enabled perfom checks on types, set to False to increase performance. Defaults to True.
+
+    Returns:
+        _type_: trasnformed string and default_fill when translation isn't possible
+    """    
+    # Filter entryes
+    if checks:
+        if type(arg) != str:
+            raise TypeError("Argument to convert must be string type (found %s)"%(type(arg)))
+        if type(transformation)!= str:
+            raise TypeError("Formating (transformation) must be string type (found %s)"%(type(transformation)))
+        if type(default_fill) != str:
+            raise TypeError("Default fill caracter must be string type(found %s)"%(type(default_fill)))
+        transformation = transformation.lower()
+        if transformation not in "".join(alls[4:14]):
+            raise ValueError("Formating (transformation) must be a valid format (see all valid formats in %s.alls[4:14] list (found %s)"%(__name__,transformation))
+
+    # Code for maping
+    result = " "
+    for i in arg:# all caracters in string
+        try: 
+            result += eval(transformation+".get('%s','%s')"%(i,default_fill)) 
+        except : # if key doesn't exist
+            result += default_fill
+    return result
+
+
+print((maping("12z*3465789",checks=True)))
 # End of library
