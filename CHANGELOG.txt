@@ -20,3 +20,7 @@ ChangeLog
 0.0.5(26/11/2022)
 ------------------
 - Fixed name of the lib file to actually work as a library
+
+0.0.6(26/11/2022)
+------------------
+- Added maping function (transforms a string into a format style for all caracters in that str)
