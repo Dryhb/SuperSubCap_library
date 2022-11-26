@@ -459,6 +459,4 @@ def maping(arg:str,transformation:str="superscripts",default_fill:str=" ",/,chec
             result += default_fill
     return result
 
-
-print((maping("12z*3465789",checks=True)))
 # End of library
