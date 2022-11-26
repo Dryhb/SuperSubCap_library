@@ -1,4 +1,4 @@
-Change Log
+ChangeLog
 ==========
 
 0.0.1 (15/11/2022)
@@ -16,3 +16,7 @@ Change Log
 0.0.4(19/11/2022)
 ------------------
 - Couple of fixes for release
+
+0.0.5(26/11/2022)
+------------------
+- Fixed name of the lib file to actually work as a library
