@@ -432,7 +432,7 @@ def maping(arg:str,transformation:str="superscripts",default_fill:str=" ",/,chec
     Args:
         arg (str): String you want to convert
         transformation (str, optional): end format (in alls[4:14]). Defaults to "superscripts".
-        default_fill (str, optional): caracter if no caracter is found. Defaults to " ".
+        default_fill (str, optional): caracter if no caracter is found. Defaults to " "(space).
         checks (bool, optional): if enabled perfom checks on types, set to False to increase performance. Defaults to True.
 
     Returns:
